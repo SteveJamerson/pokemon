@@ -1,0 +1,105 @@
+.text-field {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   margin: 0.5rem 0;
+   padding-bottom: 1.25rem;
+
+   &__content {
+      position: relative;
+
+      .icon {
+         color: inherit;
+         position: absolute;
+         margin: auto;
+         top: 0;
+         bottom: 0;
+         right: 16px;
+         cursor: pointer;
+
+         + input {
+            padding-right: 3rem;
+         }
+      }
+   }
+
+   label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      text-indent: 1rem;
+   }
+
+   input {
+      height: 56px;
+      width: 100%;
+      padding: 0.5rem 2rem;
+
+      border-radius: var(--token-border-radius-pill);
+
+      color: var(--token-color-body);
+      border: {
+         width: var(--token-border-width-default);
+         style: var(--token-border-style-solid);
+         color: var(--token-border-color-primary);
+      }
+      background-color: transparent;
+
+      &:focus {
+         border-color: var(--token-border-color-active);
+         outline: none;
+         z-index: 1;
+      }
+
+      &:disabled {
+         background-color: var(--token-border-color-primary);
+         cursor: no-drop;
+      }
+   }
+
+   &__extra {
+      position: absolute;
+      bottom: 0;
+      right: 1rem;
+   }
+
+   .hint,
+   .error {
+      margin-left: auto;
+      font-weight: 400;
+   }
+
+   &__error {
+      color: var(--token-color-error-base);
+
+      input {
+         border: {
+            color: var(--token-color-error-base);
+         }
+
+         &:focus {
+            border-color: var(--token-color-error-active);
+            z-index: 1;
+         }
+      }
+   }
+}
+
+input {
+   &::-webkit-inner-spin-button,
+   &::-webkit-search-decoration,
+   &::-webkit-search-cancel-button,
+   &::-webkit-search-results-button,
+   &::-webkit-search-results-decoration {
+      display: none;
+      -webkit-appearance: none;
+   }
+   &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: auto;
+      height: auto;
+      color: transparent;
+      background: transparent;
+   }
+}
