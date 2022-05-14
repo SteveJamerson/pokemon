@@ -9,6 +9,7 @@
       }
    },
    "background": {
-      "primary": { "value": "#FFFFFF" }
+      "primary": { "value": "#FFFFFF" },
+      "secondary": { "value": "#F2F2F2" }
    }
 }
