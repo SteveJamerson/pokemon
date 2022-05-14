@@ -4,6 +4,8 @@
       "black": { "value": "#000000" },
       "primary": {
          "base": { "value": "{color.green.base}" },
+         "hover": { "value": "{color.green.hover}" },
+         "active": { "value": "{color.green.active}" },
          "text": { "value": "{color.green.text}" }
       },
       "blue": {
@@ -16,6 +18,8 @@
       },
       "green": {
          "base": { "value": "#48D0B0" },
+         "hover": { "value": "#63D7BC" },
+         "active": { "value": "#31BF9E" },
          "text": { "value": "#3E8570" }
       },
       "pink": {
