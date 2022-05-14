@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 14 May 2022 03:00:47 GMT
+ * Generated on Sat, 14 May 2022 17:33:12 GMT
  */
 
 :root {
@@ -15,6 +15,8 @@
   --token-color-pink-text: #fb6c6c;
   --token-color-pink-base: #f2cdd6;
   --token-color-green-text: #3e8570;
+  --token-color-green-active: #31bf9e;
+  --token-color-green-hover: #63d7bc;
   --token-color-green-base: #48d0b0;
   --token-color-coral-text: #de5050;
   --token-color-coral-base: #fb6c6c;
@@ -22,6 +24,22 @@
   --token-color-blue-base: #77bdfe;
   --token-color-black: #000000;
   --token-color-white: #ffffff;
+  --token-outline-style-dotted: dotted;
+  --token-outline-style-dashed: dashed;
+  --token-outline-style-solid: solid;
+  --token-outline-width-large: 4px;
+  --token-outline-width-medium: 3px;
+  --token-outline-width-small: 2px;
+  --token-border-style-dotted: dotted;
+  --token-border-style-dashed: dashed;
+  --token-border-style-solid: solid;
+  --token-border-width-large: 3px;
+  --token-border-width-medium: 2px;
+  --token-border-width-small: 1px;
   --token-color-primary-text: var(--token-color-green-text);
+  --token-color-primary-active: var(--token-color-green-active);
+  --token-color-primary-hover: var(--token-color-green-hover);
   --token-color-primary-base: var(--token-color-green-base);
+  --token-outline-width-default: var(--token-outline-width-small);
+  --token-border-width-default: var(--token-border-width-small);
 }

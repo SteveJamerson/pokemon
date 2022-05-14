@@ -1,0 +1,28 @@
+{
+   "border": {
+      "width": {
+         "default": { "value": "{border.width.small}" },
+         "small": { "value": "1px" },
+         "medium": { "value": "2px" },
+         "large": { "value": "3px" }
+      },
+      "style": {
+         "solid": { "value": "solid" },
+         "dashed": { "value": "dashed" },
+         "dotted": { "value": "dotted" }
+      }
+   },
+   "outline": {
+      "width": {
+         "default": { "value": "{outline.width.small}" },
+         "small": { "value": "2px" },
+         "medium": { "value": "3px" },
+         "large": { "value": "4px" }
+      },
+      "style": {
+         "solid": { "value": "solid" },
+         "dashed": { "value": "dashed" },
+         "dotted": { "value": "dotted" }
+      }
+   }
+}
