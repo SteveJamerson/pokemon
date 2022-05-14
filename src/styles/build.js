@@ -9,7 +9,7 @@ const platformsCSS = {
       "time/seconds",
       "content/icon",
       "size/rem",
-      "color/hex",
+      "color/hex8",
    ],
    buildPath: "./src/styles/tokens/",
    prefix: "token",

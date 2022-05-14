@@ -32,7 +32,7 @@
    transition: 0.3s;
 
    border: 0 {
-      radius: 10rem;
+      radius: var(--token-border-radius-pill);
    }
 
    &--icon {

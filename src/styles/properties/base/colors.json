@@ -41,6 +41,31 @@
       "yellow-green": {
          "base": { "value": "#B6DE76" },
          "text": { "value": "#87B347" }
+      },
+
+      "info": {
+         "base": { "value": "#1f5eff" },
+         "hover": { "value": "#336dff" },
+         "active": { "value": "#0a50ff" },
+         "outline": { "value": "#336dff4d" }
+      },
+      "success": {
+         "base": { "value": "#58b422" },
+         "hover": { "value": "#60c526" },
+         "active": { "value": "#4fa31f" },
+         "outline": { "value": "#60c5264d" }
+      },
+      "warning": {
+         "base": { "value": "#ffb70f" },
+         "hover": { "value": "#ffbd24" },
+         "active": { "value": "#faaf00" },
+         "outline": { "value": "#ffbd244d" }
+      },
+      "error": {
+         "base": { "value": "#fc3b3b" },
+         "hover": { "value": "#fc4f4f" },
+         "active": { "value": "#fc2727" },
+         "outline": { "value": "#fc4f4f4d" }
       }
    }
 }

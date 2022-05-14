@@ -1,14 +1,15 @@
 /**
  * Do not edit directly
- * Generated on Sat, 14 May 2022 19:01:40 GMT
+ * Generated on Sat, 14 May 2022 20:20:32 GMT
  */
 
 :root[data-theme='light'] {
   --token-background-secondary: #F2F2F2;
   --token-background-primary: #FFFFFF;
-  --token-color-secondary-outline: #edeff2;
-  --token-color-secondary-active: #e1e4ea;
-  --token-color-secondary-hover: #edeff2;
-  --token-color-secondary-base: #e1e4ea;
-  --token-color-body: #282828;
+  --token-color-secondary-outline: #edeff24d;
+  --token-color-secondary-active: #e1e4eaff;
+  --token-color-secondary-hover: #edeff2ff;
+  --token-color-secondary-base: #e1e4eaff;
+  --token-color-body: #282828ff;
+  --token-border-color-primary: #f1f1f1;
 }
