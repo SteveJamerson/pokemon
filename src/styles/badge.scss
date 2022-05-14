@@ -1,0 +1,48 @@
+.badge {
+   position: relative;
+   bottom: 0;
+
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.25rem;
+
+   font: {
+      family: "Inter", sans-serif;
+      weight: normal;
+      size: 0.5rem;
+   }
+
+   padding: 0.5rem;
+
+   user-select: none;
+   vertical-align: middle;
+   line-height: 1;
+
+   background: var(--token-background-secondary);
+   -webkit-tap-highlight-color: transparent;
+   background-clip: border-box;
+
+   min-width: 50px;
+   height: 16px;
+
+   appearance: none;
+   text-decoration: none;
+
+   transition: 0.3s;
+
+   border: 0 {
+      radius: 10rem;
+   }
+
+   &--icon {
+      padding-left: 1rem;
+   }
+
+   &--lg {
+      min-height: 16px;
+      height: 30px;
+
+      font-size: 0.875rem;
+   }
+}
