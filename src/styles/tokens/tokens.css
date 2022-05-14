@@ -1,0 +1,27 @@
+/**
+ * Do not edit directly
+ * Generated on Sat, 14 May 2022 03:00:47 GMT
+ */
+
+:root {
+  --token-color-yellow-green-text: #87b347;
+  --token-color-yellow-green-base: #b6de76;
+  --token-color-yellow-text: #bf8400;
+  --token-color-yellow-base: #ffce4b;
+  --token-color-violet-text: #575176;
+  --token-color-violet-base: #a499c1;
+  --token-color-rose-text: #9b4043;
+  --token-color-rose-base: #ce8083;
+  --token-color-pink-text: #fb6c6c;
+  --token-color-pink-base: #f2cdd6;
+  --token-color-green-text: #3e8570;
+  --token-color-green-base: #48d0b0;
+  --token-color-coral-text: #de5050;
+  --token-color-coral-base: #fb6c6c;
+  --token-color-blue-text: #4689c7;
+  --token-color-blue-base: #77bdfe;
+  --token-color-black: #000000;
+  --token-color-white: #ffffff;
+  --token-color-primary-text: var(--token-color-green-text);
+  --token-color-primary-base: var(--token-color-green-base);
+}

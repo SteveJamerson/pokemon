@@ -1,0 +1,14 @@
+{
+   "color": {
+      "body": { "value": "#282828" },
+      "secondary": {
+         "base": { "value": "hsl(223, 16%, 90%)" },
+         "hover": { "value": "hsl(223, 16%, 94%)" },
+         "active": { "value": "hsl(223, 16%, 90%)" },
+         "outline": { "value": "hsla(223, 16%, 94, .3)" }
+      }
+   },
+   "background": {
+      "primary": { "value": "#FFFFFF" }
+   }
+}
