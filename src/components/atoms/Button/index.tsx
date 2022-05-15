@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "../Icon";
 import { IconName } from "../Icon/Icon.types";
@@ -19,6 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
    iconSize,
    ...props
 }) => {
+   const buttonRef = useRef<HTMLButtonElement>(null);
    const navigate = useNavigate();
 
    const redirect = () => {
@@ -36,13 +37,17 @@ export const Button: React.FC<ButtonProps> = ({
       className,
    ]);
 
+   buttonRef.current?.addEventListener("click", () => {
+      redirect();
+   });
+
    return (
       <button
+         ref={buttonRef}
          className={classes}
          type={type}
          disabled={loading || disabled}
          {...props}
-         onClick={redirect}
       >
          {iconName && iconPosition === "start" && (
             <Icon name={iconName as IconName} size={iconSize} />
