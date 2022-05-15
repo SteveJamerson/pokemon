@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./contexts/Theme";
+import { RoutesPages } from "./pages/routes-pages";
 
 const App = (): JSX.Element => {
    const { theme } = useTheme();
@@ -20,7 +22,11 @@ const App = (): JSX.Element => {
             <meta name="theme-color" content="#1f5eff" />
             <title>Project</title>
          </Helmet>
-         <ThemeProvider></ThemeProvider>
+         <ThemeProvider>
+            <HashRouter>
+               <RoutesPages></RoutesPages>
+            </HashRouter>
+         </ThemeProvider>
       </>
    );
 };
