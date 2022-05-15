@@ -6,6 +6,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    variant?: ButtonVariants;
    type?: ButtonTypes;
    text?: string;
+   link?: string;
    disabled?: boolean;
    loading?: boolean;
    iconName?: IconName;

@@ -1,11 +1,12 @@
 import { HTMLAttributes } from 'react';
 
 export interface NavbarProps extends HTMLAttributes<HTMLDivElement> {
-   brand: string;
+   brand?: string;
    links?: NavbarLink[];
+   variant?: 'default' | 'custom';
 }
 
-interface NavbarLink {
+export interface NavbarLink {
    text: string;
    href: string;
    icon?: string;
