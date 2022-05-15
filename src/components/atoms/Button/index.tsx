@@ -33,12 +33,12 @@ export const Button: React.FC<ButtonProps> = ({
          disabled={loading || disabled}
          {...props}
       >
-         {iconPosition === "start" && (
+         {iconName && iconPosition === "start" && (
             <Icon name={iconName as IconName} size={iconSize} />
          )}
          {loading ? <Icon name="loader-line" /> : text || children}
 
-         {iconPosition === "end" && (
+         {iconName && iconPosition === "end" && (
             <Icon name={iconName as IconName} size={iconSize} />
          )}
       </button>
