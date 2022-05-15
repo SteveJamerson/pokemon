@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Sun, 15 May 2022 14:17:12 GMT
+ * Generated on Sun, 15 May 2022 16:27:13 GMT
  */
 
 :root {
+  --token-background-highlight-primary: #FFDA55;
   --token-color-error-outline: #fc4f4f4d;
   --token-color-error-active: #fc2727ff;
   --token-color-error-hover: #fc4f4fff;
