@@ -1,0 +1,53 @@
+@import "./../../styles/mixins/breakpoints.scss";
+
+.home {
+   & .row {
+      min-height: calc(80vh - (94px + 2rem));
+
+      @include break("md") {
+         align-items: center;
+      }
+   }
+
+   &__title {
+      font: {
+         size: 36px;
+         weight: 900;
+      }
+      @include break("md") {
+         font: {
+            size: 54px;
+         }
+      }
+   }
+
+   &__text {
+      max-width: 40ch;
+   }
+
+   &__action {
+      margin-top: 1rem;
+   }
+
+   &__banner {
+      position: absolute;
+      width: auto;
+      top: 45%;
+      right: 0;
+      max-height: 80vh;
+      z-index: -1;
+
+      @include break("md") {
+         top: 60%;
+      }
+
+      @include break("lg") {
+         top: 50%;
+      }
+
+      @include break("xl") {
+         top: auto;
+         bottom: 0;
+      }
+   }
+}
