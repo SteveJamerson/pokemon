@@ -1,0 +1,9 @@
+.highlight--primary {
+   padding: 0 0.25rem;
+   background-image: linear-gradient(
+      transparent 0%,
+      transparent 50%,
+      var(--token-background-highlight-primary) 50%,
+      var(--token-background-highlight-primary) 100%
+   );
+}

@@ -16,6 +16,24 @@ body {
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+   margin-top: 0;
+   margin-bottom: 0.5rem;
+   font-weight: 600;
+   line-height: 1.5;
+}
+
+p {
+   margin-top: 0;
+   margin-bottom: 1rem;
+   line-height: 2;
+}
+
 img {
    height: auto;
    width: 100%;

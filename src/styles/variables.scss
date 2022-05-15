@@ -1,0 +1,26 @@
+$cols: 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 !default;
+
+$breakpoints: (
+   xs: 0,
+   sm: 600px,
+   md: 800px,
+   lg: 1000px,
+   xl: 1200px,
+);
+
+$container-widths: (
+   sm: 525px,
+   md: 725px,
+   lg: 925px,
+   xl: 1125px,
+);
+
+$spacer: 1rem !default;
+$spacers: (
+   0: 0,
+   1: $spacer / 4,
+   2: $spacer / 2,
+   3: $spacer,
+   4: $spacer * 1.5,
+   5: $spacer * 3,
+) !default;
