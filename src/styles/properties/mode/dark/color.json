@@ -10,6 +10,7 @@
    },
    "background": {
       "primary": { "value": "#23242A" },
-      "secondary": { "value": "#323741" }
+      "secondary": { "value": "#323741" },
+      "shadow": { "value": "rgba(154, 161, 171, .2)" }
    }
 }
