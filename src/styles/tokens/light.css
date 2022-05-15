@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Sat, 14 May 2022 20:20:32 GMT
+ * Generated on Sun, 15 May 2022 14:17:12 GMT
  */
 
 :root[data-theme='light'] {
+  --token-background-shadow: rgba(1, 28, 64, 0.2);
   --token-background-secondary: #F2F2F2;
   --token-background-primary: #FFFFFF;
   --token-color-secondary-outline: #edeff24d;
