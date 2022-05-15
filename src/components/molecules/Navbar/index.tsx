@@ -1,15 +1,20 @@
 import clsx from "clsx";
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Image } from "../../atoms/Image";
+import { DEFAULT_BRAND, DEFAULT_LINKS } from "./Navbar.constants";
 import { NavbarProps } from "./Navbar.interfaces";
 
 export const Navbar: React.FC<NavbarProps> = ({
    className,
    children,
    brand,
+   variant = "default",
    links,
    ...props
 }) => {
+   const navigate = useNavigate();
+
    const classes = clsx([
       {
          navbar: true,
@@ -24,13 +29,16 @@ export const Navbar: React.FC<NavbarProps> = ({
       setCollapse((c) => !c);
    }, []);
 
+   const navLinks = variant === "default" ? DEFAULT_LINKS : links;
+   const navBrand = variant === "default" ? DEFAULT_BRAND : brand;
+
    return (
       <nav className={classes} {...props}>
-         <div className="navbar__content">
+         <div className="navbar__content container">
             <div className="navbar__brand">
-               <Image src={brand}></Image>
+               <Image src={navBrand}></Image>
             </div>
-            {links && (
+            {navLinks && (
                <>
                   <button
                      className="navbar__toggle"
@@ -45,14 +53,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                      ])}
                   >
                      <ul className="navbar__links">
-                        {links.map((l, k) => (
+                        {navLinks.map((l, k) => (
                            <li
                               key={k}
                               className={clsx([
                                  { navbar__link: true, active: k === active },
                               ])}
                            >
-                              <a href={l.href}>{l.text}</a>
+                              <span onClick={() => navigate(l.href)}>
+                                 {l.text}
+                              </span>
                            </li>
                         ))}
                      </ul>
