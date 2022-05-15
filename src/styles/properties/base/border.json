@@ -14,7 +14,7 @@
       "radius": {
          "small": { "value": ".5rem" },
          "medium": { "value": ".75rem" },
-         "large": { "value": ".1rem" },
+         "large": { "value": "1rem" },
          "pill": { "value": "10rem" },
          "default": { "value": "{border.radius.medium}" }
       }
