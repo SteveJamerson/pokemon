@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 15 May 2022 16:27:13 GMT
+ * Generated on Sun, 15 May 2022 18:30:55 GMT
  */
 
 :root {
@@ -48,7 +48,7 @@
   --token-outline-width-medium: 3px;
   --token-outline-width-small: 2px;
   --token-border-radius-pill: 10rem;
-  --token-border-radius-large: .1rem;
+  --token-border-radius-large: 1rem;
   --token-border-radius-medium: .75rem;
   --token-border-radius-small: .5rem;
   --token-border-style-dotted: dotted;
