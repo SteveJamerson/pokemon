@@ -7,3 +7,15 @@
       var(--token-background-highlight-primary) 100%
    );
 }
+
+.shadow {
+   box-shadow: 0px 4px 16px var(--token-background-shadow);
+}
+
+.bg-green {
+   background: var(--token-color-green-base);
+}
+
+.bg-red {
+   background: var(--token-color-coral-base);
+}
