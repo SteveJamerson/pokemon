@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "../Icon";
 import { IconName } from "../Icon/Icon.types";
@@ -37,9 +37,11 @@ export const Button: React.FC<ButtonProps> = ({
       className,
    ]);
 
-   buttonRef.current?.addEventListener("click", () => {
-      redirect();
-   });
+   useEffect(() => {
+      buttonRef.current?.addEventListener("click", () => {
+         redirect();
+      });
+   }, []);
 
    return (
       <button
