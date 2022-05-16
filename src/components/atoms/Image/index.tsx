@@ -6,6 +6,7 @@ import { ImageProps } from "./Image.interfaces";
 export const Image: React.FC<ImageProps> = ({
    src,
    alt,
+   external,
    className,
    ...props
 }) => {
@@ -19,7 +20,9 @@ export const Image: React.FC<ImageProps> = ({
 
    const source = () => {
       try {
-         return require(`../../../assets/images/${theme}/${src}`);
+         return external
+            ? src
+            : require(`../../../assets/images/${theme}/${src}`);
       } catch (e) {
          return require(`../../../assets/images/${theme}/not-found.svg`);
       }

@@ -16,15 +16,27 @@
          "base": { "value": "#FB6C6C" },
          "text": { "value": "#DE5050" }
       },
+      "gray": {
+         "base": { "value": "#888888" },
+         "text": { "value": "#443E3D" }
+      },
       "green": {
          "base": { "value": "#48D0B0" },
          "hover": { "value": "#63D7BC" },
          "active": { "value": "#31BF9E" },
          "text": { "value": "#3E8570" }
       },
+      "peach": {
+         "base": { "value": "#F2D4B4" },
+         "text": { "value": "#ab8b68" }
+      },
       "pink": {
          "base": { "value": "#F2CDD6" },
          "text": { "value": "#FB6C6C" }
+      },
+      "rock": {
+         "base": { "value": "#B3B2A7" },
+         "text": { "value": "#5a5946" }
       },
       "rose": {
          "base": { "value": "#CE8083" },
@@ -37,6 +49,10 @@
       "yellow": {
          "base": { "value": "#FFCE4B" },
          "text": { "value": "#BF8400" }
+      },
+      "yellow-dark": {
+         "base": { "value": "#dfb034" },
+         "text": { "value": "#765a10" }
       },
       "yellow-green": {
          "base": { "value": "#B6DE76" },

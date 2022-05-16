@@ -1,3 +1,3 @@
 export * from './Navbar';
-export * from './PokemonCard';
-export * from './PokemonDetails';
+export * from './Pokemons/PokemonCard';
+export * from './Pokemons/PokemonDetails';

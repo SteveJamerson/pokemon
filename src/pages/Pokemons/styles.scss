@@ -1,0 +1,40 @@
+@import "./../../styles/mixins/breakpoints.scss";
+@import "./../../styles/utils.scss";
+
+.pokemons {
+   padding-top: 4rem;
+
+   &__title {
+      text-align: center;
+      font: {
+         size: 30px;
+         weight: 500;
+      }
+      margin-bottom: 2rem;
+
+      @include break("sm") {
+         letter-spacing: 2px;
+         font: {
+            size: 36px;
+         }
+      }
+   }
+
+   &__search input {
+      @extend .shadow;
+   }
+
+   &__cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .pokemon-card {
+         flex: 1 1 100%;
+
+         @include break("sm") {
+            flex: 1 1 150px;
+         }
+      }
+   }
+}

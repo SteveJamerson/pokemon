@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import React, { useCallback, useState } from "react";
-import { Badge, Image } from "../../atoms";
-import { PokemonCardProps } from "./PokemonCard.interfaces";
+import { Badge, Image } from "../../../atoms";
+import { PokemonsProps } from "../Pokemons.interfaces";
+import "../pokemons.scss";
 import "./pokemons-card.scss";
 
-export const PokemonCard: React.FC<PokemonCardProps> = ({
+export const PokemonCard: React.FC<PokemonsProps> = ({
    className,
    variant = "primary",
    title,
@@ -13,7 +14,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
    image,
    type,
    badge,
-   number,
+   hash,
    ...props
 }) => {
    const [show, setShow] = useState(false);
@@ -28,18 +29,20 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
          backdrop: show,
          [`pokemon-card--${variant}`]: variant,
          [`pokemon-card--${type}`]: type,
+         [`pokemon-bg`]: type,
+         [`pokemon-bg--${type}`]: type,
       },
       className,
    ]);
 
    return (
       <div className={classes} {...props}>
-         <span className="hash">#{number}</span>
+         <span className="hash">#{hash}</span>
          <p className="title">{title}</p>
-         {badge?.map((b) => (
-            <Badge text={b} />
+         {badge?.map((b, k) => (
+            <Badge text={b} key={k} />
          ))}
-         <Image src={image} />
+         <Image external={true} src={image} />
       </div>
    );
 };
