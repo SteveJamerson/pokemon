@@ -1,19 +1,21 @@
 import clsx from "clsx";
 import React from "react";
-import { Badge, Icon, Image } from "../../atoms";
-import { PokemonDetailsProps } from "./PokemonDetails.interfaces";
+import { Badge, Icon, Image } from "../../../atoms";
+import { PokemonsProps } from "../Pokemons.interfaces";
+import "../pokemons.scss";
 import "./pokemons-details.scss";
 
-export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
+export const PokemonDetails: React.FC<PokemonsProps> = ({
    className,
    variant = "primary",
    title,
    description,
    info,
+   stats,
    image,
    type,
    badge,
-   number,
+   hash,
    outClick,
    ...props
 }) => {
@@ -23,9 +25,14 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
          backdrop: true,
          [`pokemon-details--${variant}`]: variant,
          [`pokemon-details--${type}`]: type,
+         [`pokemon-bg`]: type,
+         [`pokemon-bg--${type}`]: type,
       },
       className,
    ]);
+
+   const total: number =
+      stats && Object.values(stats)?.reduce((a, b) => a + b, 0);
 
    const triggerOutClick = (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -47,23 +54,23 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
                <Icon name="close-fill" />
             </button>
             <div className="pokemon-details__image">
-               <Image src={image} />
+               <Image external={true} src={image} />
 
                <div className="pokemon-details__image-badge">
-                  {badge?.map((b) => (
-                     <Badge sizes="lg" text={b} />
+                  {badge?.map((b, k) => (
+                     <Badge key={k} sizes="lg" text={b} />
                   ))}
                </div>
             </div>
             <div className="pokemon-details__body">
                <div className="pokemon-details__body-header">
                   <p className="title"> {title} </p>
-                  <p className="number"> #{number} </p>
+                  <p className="hash"> #{hash} </p>
                </div>
                {description}
                <ul className="pokemon-details__info">
                   {info?.weight && (
-                     <li className="item">
+                     <li key={0} className="item">
                         <span>
                            <Icon name="loader-line" />
                            <p>{info.weight}</p>
@@ -74,7 +81,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
                      </li>
                   )}
                   {info?.hight && (
-                     <li className="item">
+                     <li key={1} className="item">
                         <span>
                            <Icon name="loader-line" />
                            <p>{info.hight}</p>
@@ -85,7 +92,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
                      </li>
                   )}
                   {info?.power && (
-                     <li className="item">
+                     <li key={2} className="item">
                         <span>
                            <p>{info.power}</p>
                         </span>
@@ -96,50 +103,74 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
                   )}
                </ul>
                <ul className="pokemon-details__progress">
-                  {info?.atk && (
-                     <li className="item">
-                        <b>Ataque</b>
-                        <span>{info.atk}</span>
+                  {stats?.hp && (
+                     <li key={3} className="item">
+                        <b>Saúde</b>
+                        <span>{stats.hp}</span>
                         <div className="progress">
                            <div
                               className="progress__container bg-green"
-                              style={{ width: `${info.atk}%` }}
+                              style={{ width: `${stats.hp}%` }}
                            ></div>
                         </div>
                      </li>
                   )}
-                  {info?.def && (
-                     <li className="item">
+                  {stats?.attack && (
+                     <li key={4} className="item">
+                        <b>Ataque</b>
+                        <span>{stats.attack}</span>
+                        <div className="progress">
+                           <div
+                              className="progress__container bg-green"
+                              style={{ width: `${stats.attack}%` }}
+                           ></div>
+                        </div>
+                     </li>
+                  )}
+                  {stats?.defense && (
+                     <li key={5} className="item">
                         <b>Defesa</b>
-                        <span>{info.def}</span>
+                        <span>{stats.defense}</span>
                         <div className="progress">
                            <div
                               className="progress__container bg-red"
-                              style={{ width: `${info.def}%` }}
+                              style={{ width: `${stats.defense}%` }}
                            ></div>
                         </div>
                      </li>
                   )}
-                  {info?.vl_atk && (
-                     <li className="item">
-                        <b>Vl. Ataque</b>
-                        <span>{info.vl_atk}</span>
+                  {stats?.special_attack && (
+                     <li key={6} className="item">
+                        <b>Ataque Especial</b>
+                        <span>{stats.special_attack}</span>
                         <div className="progress">
                            <div
                               className="progress__container bg-green"
-                              style={{ width: `${info.vl_atk}%` }}
+                              style={{ width: `${stats.special_attack}%` }}
                            ></div>
                         </div>
                      </li>
                   )}
-                  {info?.total && (
-                     <li className="item">
+                  {stats?.special_defense && (
+                     <li key={7} className="item">
+                        <b>Defesa. Especial</b>
+                        <span>{stats.special_defense}</span>
+                        <div className="progress">
+                           <div
+                              className="progress__container bg-red"
+                              style={{ width: `${stats.special_defense}%` }}
+                           ></div>
+                        </div>
+                     </li>
+                  )}
+                  {total && (
+                     <li key={8} className="item">
                         <b>Total</b>
-                        <span>{info.total}</span>
+                        <span>{total}</span>
                         <div className="progress">
                            <div
                               className="progress__container bg-green"
-                              style={{ width: `${info.total}%` }}
+                              style={{ width: `${total}%` }}
                            ></div>
                         </div>
                      </li>
