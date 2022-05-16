@@ -10,7 +10,7 @@ export const POKEMONS__ALL: PokemonsResponse = {
    ],
 };
 
-export const POKEMON = {
+export const POKEMON: any = {
    height: 7,
    id: 1,
    name: 'bulbasaur',

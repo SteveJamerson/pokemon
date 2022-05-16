@@ -74,12 +74,10 @@ const Pokemons: React.FC = () => {
    const request = useDebounce(
       useCallback(async () => {
          await getAllPokemons()
-            .then((respose) => respose.json())
             .then((data) => data.results)
             .then((result) => {
                result.forEach((p: PokemonsResults) =>
                   getPokemon(p.url)
-                     .then((respose) => respose.json())
                      .then((data) => data)
                      .then((n) => {
                         const p = convertPokemon(n);
@@ -90,14 +88,13 @@ const Pokemons: React.FC = () => {
                         });
                      })
                );
-            });
+            })
+            .catch((e) => console.log(e));
          await getAllPokemons({ limit: "500" })
-            .then((respose) => respose.json())
             .then((data) => data.results)
             .then((result) => {
                result.forEach((p: PokemonsResults) =>
                   getPokemon(p.url)
-                     .then((respose) => respose.json())
                      .then((data) => data)
                      .then((n) => {
                         const p = convertPokemon(n);

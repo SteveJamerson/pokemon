@@ -12,14 +12,16 @@ export interface PokemonsResponse {
    results: PokemonsResults[];
 }
 
-export const getAllPokemons = async (params?: object): Promise<Response> => {
+export const getAllPokemons = async (
+   params?: object
+): Promise<PokemonsResponse> => {
    return fetch(
       ENDPOINT_POKEMONS +
          '?' +
          new URLSearchParams(Object.assign({ limit: '18' }, params))
-   );
+   ).then((response) => response.json());
 };
 
-export const getPokemon = async (url: string): Promise<Response> => {
-   return fetch(url);
+export const getPokemon = async (url: string): Promise<any> => {
+   return fetch(url).then((response) => response.json());
 };

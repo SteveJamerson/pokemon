@@ -1,38 +1,36 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Pokemons from ".";
-import * as service from "../../services/pokemons";
+import { POKEMON, POKEMONS__ALL } from "../../services/mock/Pokemons.mock";
+import * as ServicePokemon from "../../services/pokemons";
 
-// jest.mock("../../services/pokemons", () => ({
-//    getAllPokemons: jest.fn((..._) => {
-//       return new Promise((resolve) => {
-//          resolve(true);
-//       });
-//    }),
-//    getPokemon: jest.fn((..._) => {
-//       return new Promise((resolve) => {
-//          resolve(true);
-//       });
-//    }),
-// }));
+const mockedService = ServicePokemon as jest.Mocked<typeof ServicePokemon>;
 
-// const mockedService = service as jest.Mocked<typeof service>;
-// mockedService.getAllPokemons.mockResolvedValue({ data: POKEMONS__ALL });
-// mockedService.getPokemon.mockResolvedValue({ data: POKEMON });
-
-afterAll(cleanup);
+jest.mock("../../services/pokemons", () => ({
+   getAllPokemons: jest.fn(() => new Promise((resolve) => resolve(true))),
+   getPokemon: jest.fn(() => new Promise((resolve) => resolve(true))),
+}));
 
 describe("Pokemons", () => {
    beforeEach(async () => {
-      // service.getAllPokemons.mockResolvedValue({ data: POKEMONS__ALL });
+      mockedService.getAllPokemons.mockResolvedValue(
+         new Promise((resolve) => resolve(POKEMONS__ALL))
+      );
+      mockedService.getPokemon.mockResolvedValue(
+         new Promise((resolve) => resolve(POKEMON))
+      );
    });
 
    it("should be created", async () => {
+      jest.useFakeTimers();
       render(
          <Router>
             <Pokemons />
          </Router>
       );
+      jest.advanceTimersByTime(10000);
+      jest.useRealTimers();
    });
 
    it("should be getAllPokemons", async () => {
@@ -42,13 +40,11 @@ describe("Pokemons", () => {
             <Pokemons />
          </Router>
       );
-      jest.advanceTimersByTime(2000);
-      const mockAll = jest.spyOn(service, "getAllPokemons");
-      // mockAll.mockResolvedValue(
-      //    new Promise((resolve) => resolve(POKEMONS__ALL))
-      // );
-      jest.advanceTimersByTime(2000);
+      jest.advanceTimersByTime(10000);
       jest.useRealTimers();
+      const all = jest.spyOn(ServicePokemon, "getAllPokemons");
+
+      expect(all).toBeCalled();
    });
 
    it("should be getPokemon", async () => {
@@ -58,10 +54,9 @@ describe("Pokemons", () => {
             <Pokemons />
          </Router>
       );
-      jest.advanceTimersByTime(2000);
-      const mockAll = jest.spyOn(service, "getPokemon");
-      // mockAll.mockResolvedValue(new Promise((resolve) => resolve(POKEMON)));
-      jest.advanceTimersByTime(2000);
+      jest.advanceTimersByTime(10000);
       jest.useRealTimers();
+      const one = jest.spyOn(ServicePokemon, "getPokemon");
+      expect(one).toBeCalled();
    });
 });
