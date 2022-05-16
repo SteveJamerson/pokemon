@@ -78,7 +78,8 @@
             opacity: 0.8;
          }
 
-         &:checked {
+         &:checked,
+         &.checked {
             opacity: 1;
 
             &::after {

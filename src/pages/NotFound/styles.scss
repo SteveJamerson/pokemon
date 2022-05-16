@@ -1,0 +1,19 @@
+.not-found {
+   max-height: 50vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   min-height: 85vh;
+
+   &__title {
+      font: {
+         size: 36px;
+         weight: 700;
+      }
+   }
+
+   &__image {
+      max-height: 50vh;
+   }
+}

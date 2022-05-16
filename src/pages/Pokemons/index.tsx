@@ -4,7 +4,7 @@ import React, {
    useLayoutEffect,
    useState,
 } from "react";
-import { Checkbox, Drop, TextField } from "../../components/atoms";
+import { Checkbox, Drop, Image, TextField } from "../../components/atoms";
 import {
    Navbar,
    PokemonCard,
@@ -109,7 +109,11 @@ const Pokemons: React.FC = () => {
          }
       });
 
-      setPokemonsView(value === "" ? pokemons : arr);
+      setPokemonsView(
+         arr.length && !Object.values(formFilter).every((f) => f)
+            ? pokemons
+            : arr
+      );
    };
 
    const handleFilter = (event: any) => {
@@ -212,36 +216,40 @@ const Pokemons: React.FC = () => {
                   </div>
                   <div className="col-12">
                      <Slider index={indexPerSlide}>
-                        {separar(
-                           pokemonsView
-                              .sort((a, b) => (a.hash > b.hash ? 1 : -1))
-                              .sort((a: any, b: any) => {
-                                 if (a.stats[formSort] < b.stats[formSort]) {
-                                    return -1;
-                                 } else if (
-                                    a.stats[formSort] > b.stats[formSort]
-                                 ) {
-                                    return 1;
-                                 } else {
-                                    return 0;
-                                 }
-                              }),
-                           itemPerSlide
-                        ).map((view: PokemonsProps[], k: any) => {
-                           return (
-                              <div className="pokemons__cards" key={k}>
-                                 {view.map((pokemon, key) => (
-                                    <PokemonCard
-                                       key={key}
-                                       {...pokemon}
-                                       onClick={() =>
-                                          handlePokemonShow(pokemon.hash)
-                                       }
-                                    />
-                                 ))}
-                              </div>
-                           );
-                        })}
+                        {pokemonsView.length ? (
+                           separar(
+                              pokemonsView
+                                 .sort((a, b) => (a.hash > b.hash ? 1 : -1))
+                                 .sort((a: any, b: any) => {
+                                    if (a.stats[formSort] > b.stats[formSort]) {
+                                       return -1;
+                                    } else if (
+                                       a.stats[formSort] < b.stats[formSort]
+                                    ) {
+                                       return 1;
+                                    } else {
+                                       return 0;
+                                    }
+                                 }),
+                              itemPerSlide
+                           ).map((view: PokemonsProps[], k: any) => {
+                              return (
+                                 <div className="pokemons__cards" key={k}>
+                                    {view.map((pokemon, key) => (
+                                       <PokemonCard
+                                          key={key}
+                                          {...pokemon}
+                                          onClick={() =>
+                                             handlePokemonShow(pokemon.hash)
+                                          }
+                                       />
+                                    ))}
+                                 </div>
+                              );
+                           })
+                        ) : (
+                           <Image className="not-pokemons" />
+                        )}
                      </Slider>
                      {pokemonShow && (
                         <PokemonDetails
