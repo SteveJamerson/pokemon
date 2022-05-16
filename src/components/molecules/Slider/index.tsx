@@ -138,9 +138,8 @@ export const Slider: React.FC<SliderProps> = ({
                         key={i}
                         type="radio"
                         name="slider__select"
-                        className="dot"
+                        className={`dot ${selected === i ? "checked" : ""}`}
                         onClick={() => select(i)}
-                        checked={selected === i}
                      />
                   );
                })}
