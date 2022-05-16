@@ -12,9 +12,17 @@ import {
    PokemonsResults,
 } from "../../services/pokemons";
 import { useDebounce } from "../../utils/useDebounce";
+import {
+   convertPokemon,
+   FILTER__ATK,
+   FILTER__DEF,
+   FILTER__TYPE,
+} from "./pokemons.constants";
 import "./styles.scss";
 
 const Pokemons: React.FC = () => {
+   const [loading, setLoading] = useState(true);
+
    const [pokemonShow, setPokemonShow] = useState(false);
    const [pokemons, setPokemons] = useState<PokemonsProps[]>([]);
    const [pokemonsPagination, setPokemonsPagination] = useState<number>(1);
@@ -22,54 +30,12 @@ const Pokemons: React.FC = () => {
    const [pokemonsView, setPokemonsView] = useState<PokemonsProps[]>([]);
 
    const [formFilter, setFormFilter] = useState<any>({});
+   const [formSort, setFormSort] = useState<any>({});
 
    const handlePokemonShow = useCallback((index: number) => {
       setPokemonsDetails(index);
       setPokemonShow((s) => !s);
    }, []);
-
-   const convertPokemon = (data: any) => {
-      const { id, name, height, weight, types, sprites, stats, moves } = data;
-      const p: any = {
-         name: name,
-         description:
-            "Bulbasaur pode ser visto cochilando sob a luz do sol. Há uma semente nas costas. Ao absorver os raios do sol, a semente cresce progressivamente maior.",
-         info: {
-            weight: weight / 10,
-            hight: height / 10,
-            power: moves[0].move.name.replace(/-/g, " "),
-         },
-         stats: {},
-         hash: id,
-         image: sprites.other.dream_world.front_default,
-         type: types[0].type.name,
-         badge: types.map((t: any) => t.type.name),
-      };
-      Object.values(stats).forEach((s: any) => {
-         p.stats[`${s.stat.name.replace("-", "_")}`] = s.base_stat;
-      });
-      return p;
-   };
-
-   const FILTER__TYPE = [
-      "fire",
-      "grass",
-      "bug",
-      "electric",
-      "water",
-      "normal",
-      "psychic",
-      "ground",
-      "poison",
-      "dragon",
-      "flying",
-      "fighting",
-      "rock",
-      "steel",
-      "dark",
-      "ghost",
-      "ice",
-   ];
 
    const request = useDebounce(
       useCallback(async () => {
@@ -89,6 +55,7 @@ const Pokemons: React.FC = () => {
                      })
                );
             })
+            .finally(() => setLoading(false))
             .catch((e) => console.log(e));
          await getAllPokemons({ limit: "500" })
             .then((data) => data.results)
@@ -104,7 +71,8 @@ const Pokemons: React.FC = () => {
                         });
                      })
                );
-            });
+            })
+            .catch((e) => console.log(e));
       }, [])
    );
 
@@ -152,6 +120,12 @@ const Pokemons: React.FC = () => {
       });
    };
 
+   const handleSort = (event: any) => {
+      const id: "attack" | "special_attack" | "defense" | "special_defense" =
+         event.target.id.replace(" ", "_");
+      setFormSort(id);
+   };
+
    useEffect(() => {
       request();
    }, []);
@@ -185,18 +159,54 @@ const Pokemons: React.FC = () => {
                            />
                         ))}
                      </Drop>
-                     <Drop text="Ataque"></Drop>
-                     <Drop text="Defesa"></Drop>
+                     <Drop text="Ataque">
+                        {FILTER__ATK.map((f, k) => (
+                           <div key={k} className="sort">
+                              <input
+                                 id={f}
+                                 name="sort"
+                                 type="radio"
+                                 onChange={handleSort}
+                              />
+                              <label htmlFor={f}>{f}</label>
+                           </div>
+                        ))}
+                     </Drop>
+                     <Drop text="Defesa">
+                        {FILTER__DEF.map((f, k) => (
+                           <div key={k} className="sort">
+                              <input
+                                 id={f}
+                                 name="sort"
+                                 type="radio"
+                                 onChange={handleSort}
+                              />
+                              <label htmlFor={f}>{f}</label>
+                           </div>
+                        ))}
+                     </Drop>
                   </div>
                   <div className="col-12">
                      <div className="pokemons__cards">
                         {pokemonsView
                            .sort((a, b) => (a.hash > b.hash ? 1 : -1))
+                           .sort((a: any, b: any) => {
+                              if (a.stats[formSort] < b.stats[formSort]) {
+                                 return -1;
+                              } else if (
+                                 a.stats[formSort] > b.stats[formSort]
+                              ) {
+                                 return 1;
+                              } else {
+                                 return 0;
+                              }
+                           })
                            .map((pokemon, k) => (
                               <PokemonCard
                                  key={k}
                                  {...pokemon}
                                  onClick={() => handlePokemonShow(pokemon.hash)}
+                                 loading={loading}
                               />
                            ))}
                      </div>
@@ -208,6 +218,7 @@ const Pokemons: React.FC = () => {
                               (i) => i.hash === pokemonsDetails
                            ) as PokemonsProps)}
                            outClick={handlePokemonShow}
+                           loading={loading}
                         />
                      )}
                   </div>
