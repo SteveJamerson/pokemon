@@ -14,6 +14,7 @@
       "@types/react-helmet": "^6.1.5",
       "axios": "^0.27.2",
       "clsx": "^1.1.1",
+      "gh-pages": "^4.0.0",
       "node-sass": "^7.0.1",
       "react": "^18.0.0",
       "react-dom": "^18.0.0",
@@ -31,7 +32,9 @@
       "build:style": "style-dictionary build --config ./src/styles/build.js",
       "test": "react-scripts test",
       "test:cov": "react-scripts test --coverage --watchAll=false",
-      "eject": "react-scripts eject"
+      "eject": "react-scripts eject",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -b pages -d build"
    },
    "eslintConfig": {
       "extends": [
