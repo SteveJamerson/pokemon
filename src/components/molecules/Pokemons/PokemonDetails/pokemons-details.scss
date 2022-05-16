@@ -116,6 +116,7 @@
          width: 50%;
          min-height: auto;
          margin: 0;
+         height: auto;
          padding-top: 1rem;
          border-radius: var(--token-border-radius-large);
       }
@@ -135,6 +136,8 @@
       top: 1rem;
       color: var(--token-color-white);
       z-index: 1;
+
+      cursor: pointer;
 
       &.desktop {
          display: none;
