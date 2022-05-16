@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDebounce } from "../../../utils/useDebounce";
 import { SliderProps } from "./Slider.interfaces";
 import "./slider.scss";
 
 export const Slider: React.FC<SliderProps> = ({
    mouseEvent = false,
-   touchEvent = true,
+   touchEvent = false,
    navigation = true,
    index = 0,
    children,
@@ -68,18 +69,20 @@ export const Slider: React.FC<SliderProps> = ({
 
    let touchXMove: any;
 
-   const touchstart = (e: React.TouchEvent<HTMLDivElement>): void => {
-      const touch = e.touches[0];
-      setTouchStart(touch.screenX);
-      setIsDown(true);
-      setIsUp(false);
-      setIndexStart((transform / size) | 0);
-   };
-   const touchend = (e: any) => {
+   const touchstart = useDebounce(
+      (e: React.TouchEvent<HTMLDivElement>): void => {
+         const touch = e.touches[0];
+         setTouchStart(touch.screenX);
+         setIsDown(true);
+         setIsUp(false);
+         setIndexStart((transform / size) | 0);
+      }
+   );
+   const touchend = useDebounce((e: any) => {
       setIsDown(false);
       setIsUp(true);
-   };
-   const touchmove = (e: React.TouchEvent<HTMLDivElement>) => {
+   });
+   const touchmove = useDebounce((e: React.TouchEvent<HTMLDivElement>) => {
       const touch = e.touches[0];
 
       touchXMove = touchStart - touch.screenX;
@@ -95,7 +98,7 @@ export const Slider: React.FC<SliderProps> = ({
 
       setTransform(indexFinish * size);
       setSelected(indexFinish);
-   };
+   });
 
    useEffect(() => {
       window.onresize = () => {

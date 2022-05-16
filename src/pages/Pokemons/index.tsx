@@ -43,12 +43,10 @@ const Pokemons: React.FC = () => {
    const [itemPerSlide, setItemPerSlide] = useState(18);
    const [indexPerSlide, setIndexPerSlide] = useState(0);
 
-   const handlePokemonShow = useDebounce(
-      useCallback((index: number) => {
-         setPokemonsDetails(index);
-         setPokemonShow((s) => !s);
-      }, [])
-   );
+   const handlePokemonShow = useCallback((index: number) => {
+      setPokemonsDetails(index);
+      setPokemonShow((s) => !s);
+   }, []);
 
    const request = useDebounce(
       useCallback(async () => {
