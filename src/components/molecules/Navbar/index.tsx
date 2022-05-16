@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Image } from "../../atoms/Image";
 import { DEFAULT_BRAND, DEFAULT_LINKS } from "./Navbar.constants";
 import { NavbarProps } from "./Navbar.interfaces";
@@ -23,7 +23,6 @@ export const Navbar: React.FC<NavbarProps> = ({
    ]);
 
    const [collapse, setCollapse] = useState(false);
-   const [active, setActive] = useState(0);
 
    const handleCollapse = useCallback(() => {
       setCollapse((c) => !c);
@@ -36,7 +35,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       <nav className={classes} {...props}>
          <div className="navbar__content container">
             <div className="navbar__brand">
-               <Image src={navBrand}></Image>
+               <Link to={navBrand?.href || "/home"}>
+                  <Image src={navBrand?.src}></Image>
+               </Link>
             </div>
             {navLinks && (
                <>
@@ -54,16 +55,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                      <ul className="navbar__links">
                         {navLinks.map((l, k) => (
-                           <li
-                              key={k}
-                              className={clsx([
-                                 { navbar__link: true, active: k === active },
-                              ])}
-                           >
-                              <span onClick={() => navigate(l.href)}>
-                                 {l.text}
-                              </span>
-                           </li>
+                           <NavLink key={k} to={l.href}>
+                              {({ isActive }) => (
+                                 <li
+                                    className={clsx([
+                                       {
+                                          navbar__link: true,
+                                          active: isActive,
+                                       },
+                                    ])}
+                                 >
+                                    <span onClick={() => navigate(l.href)}>
+                                       {l.text}
+                                    </span>
+                                 </li>
+                              )}
+                           </NavLink>
                         ))}
                      </ul>
                   </div>
