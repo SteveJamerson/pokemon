@@ -73,7 +73,7 @@
          position: relative;
          max-height: 250px;
          margin: auto;
-         top: 25%;
+         top: 15%;
 
          @include break("sm") {
             top: 0;
@@ -100,9 +100,9 @@
 
       border-radius: var(--token-border-radius-large)
          var(--token-border-radius-large) 0 0;
-      height: calc(100vh - 335px);
+      height: calc(100vh - 300px);
 
-      margin-top: -1rem;
+      margin-top: -3rem;
 
       background-color: var(--token-background-primary);
 
