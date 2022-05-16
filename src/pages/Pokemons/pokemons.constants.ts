@@ -44,3 +44,31 @@ export const convertPokemon = (data: any) => {
    });
    return p;
 };
+
+export const separar = (itens: any[], maximo: number) => {
+   return itens.reduce((acumulador, item, indice) => {
+      const grupo = Math.floor(indice / maximo);
+      acumulador[grupo] = [...(acumulador[grupo] || []), item];
+      return acumulador;
+   }, []);
+};
+
+export const maxPerSlide = (width: number) => {
+   if (width > 1325.98) {
+      return 18;
+   }
+   if (width > 1125.98) {
+      return 12;
+   }
+   if (width > 925.98) {
+      return 9;
+   }
+   if (width > 725.98) {
+      return 6;
+   }
+   if (width > 525.98) {
+      return 4;
+   } else {
+      return 3;
+   }
+};
