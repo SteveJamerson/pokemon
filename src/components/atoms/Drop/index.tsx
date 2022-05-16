@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../Button";
 import { DropProps } from "./Drop.interfaces";
 
@@ -13,6 +13,8 @@ export const Drop: React.FC<DropProps> = ({
    iconSize = 18,
    ...props
 }) => {
+   const dropRef = useRef<HTMLDivElement>(null);
+
    const [opened, setOpened] = useState(false);
 
    const handleOpen = useCallback(() => {
@@ -29,8 +31,14 @@ export const Drop: React.FC<DropProps> = ({
       className,
    ]);
 
+   useEffect(() => {
+      window.addEventListener("click", (e: any): void => {
+         !dropRef.current?.contains(e.target) && setOpened(false);
+      });
+   }, []);
+
    return (
-      <div className={classes} {...props}>
+      <div ref={dropRef} className={classes} {...props}>
          <Button
             className="drop-button"
             variant="secondary"

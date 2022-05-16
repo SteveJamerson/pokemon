@@ -15,6 +15,7 @@ export const PokemonCard: React.FC<PokemonsProps> = ({
    type,
    badge,
    hash,
+   loading,
    ...props
 }) => {
    const [show, setShow] = useState(false);
@@ -31,6 +32,7 @@ export const PokemonCard: React.FC<PokemonsProps> = ({
          [`pokemon-card--${type}`]: type,
          [`pokemon-bg`]: type,
          [`pokemon-bg--${type}`]: type,
+         loading: loading,
       },
       className,
    ]);

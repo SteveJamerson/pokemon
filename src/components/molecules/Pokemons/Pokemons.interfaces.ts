@@ -11,6 +11,7 @@ export interface PokemonsProps extends HTMLAttributes<HTMLDivElement> {
    badge?: string[];
    type?: PokemonType;
    hash: number;
+   loading?: boolean;
    outClick?: any;
 }
 

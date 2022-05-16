@@ -32,9 +32,26 @@
       .pokemon-card {
          flex: 1 1 100%;
 
-         @include break("sm") {
-            flex: 1 1 150px;
+         @include break("xs") {
+            flex: 1 1 45%;
+         }
+         @include break("md") {
+            flex: 1 1 25%;
+         }
+         @include break("lg") {
+            flex: 1 1 20%;
+         }
+         @include break("xl") {
+            flex: 1 1 15%;
          }
       }
+   }
+
+   .sort {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 1.375rem;
+      margin: 0.25rem 0;
    }
 }
