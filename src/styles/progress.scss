@@ -1,0 +1,9 @@
+.progress {
+   display: flex;
+   height: 0.25rem;
+   width: 100%;
+   background: var(--token-background-secondary);
+   border-radius: var(--token-border-radius-pill);
+   margin: auto;
+   overflow: hidden;
+}

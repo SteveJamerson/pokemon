@@ -1,0 +1,119 @@
+@import "./mixins/breakpoints";
+
+.button {
+   position: relative;
+   bottom: 0;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+
+   font: {
+      family: "Inter", sans-serif;
+      weight: bold;
+      size: 1.25rem;
+   }
+
+   padding: 0.5rem 2rem;
+   margin: {
+      bottom: 0.5rem;
+   }
+
+   user-select: none;
+   vertical-align: middle;
+   line-height: 1;
+
+   background: transparent;
+   -webkit-tap-highlight-color: transparent;
+   background-clip: border-box;
+
+   min-height: 66px;
+   min-width: 100%;
+
+   appearance: none;
+   text-decoration: none;
+
+   transition: 0.3s;
+
+   border: 2px solid transparent {
+      radius: var(--token-border-radius-default);
+   }
+
+   cursor: pointer;
+
+   @include break("xs") {
+      display: inline-flex;
+      min-width: 100px;
+   }
+
+   &:hover {
+      z-index: 1;
+   }
+
+   &:active {
+      outline: none !important;
+   }
+
+   &--primary {
+      background-color: var(--token-color-primary-base);
+      color: var(--token-color-white);
+      box-shadow: 0 4px 0 0 var(--token-color-secondary-base);
+
+      &:not(:disabled) {
+         &:hover {
+            background-color: var(--token-color-primary-hover);
+         }
+
+         &:active {
+            background-color: var(--token-color-primary-active);
+            box-shadow: 0 0px 0 0 var(--token-color-secondary-base);
+            bottom: -4px;
+         }
+      }
+   }
+
+   &--secondary {
+      background-color: var(--token-color-secondary-base);
+      color: var(--token-color-body);
+      box-shadow: 0 4px 0 0 var(--token-color-primary-base);
+
+      &:not(:disabled) {
+         &:hover {
+            background-color: var(--token-color-secondary-hover);
+         }
+
+         &:active {
+            background-color: var(--token-color-secondary-active);
+            box-shadow: 0 0px 0 0 var(--token-color-primary-base);
+            bottom: -4px;
+         }
+      }
+   }
+
+   &--loading {
+      cursor: no-drop;
+
+      .icon {
+         transition: 0.3s;
+         animation-name: spin;
+         animation-duration: 0.75s;
+         animation-iteration-count: infinite;
+         animation-timing-function: linear;
+      }
+   }
+
+   &:disabled {
+      filter: saturate(0.5);
+      cursor: no-drop;
+   }
+}
+
+@keyframes spin {
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
+}

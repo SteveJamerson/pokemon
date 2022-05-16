@@ -1,0 +1,130 @@
+@import "../../../styles/mixins/breakpoints.scss";
+
+.pokemon-bg {
+   &:not(.pokemon-details) {
+      color: var(--token-color-white);
+   }
+
+   @include break("sm", "max-width") {
+      [class$="__close"] {
+         color: var(--token-color-white);
+      }
+   }
+
+   &--grass {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-green-base);
+      }
+
+      .hash {
+         color: var(--token-color-green-text);
+      }
+   }
+   &--fire,
+   &--dragon {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-coral-base);
+      }
+
+      .hash {
+         color: var(--token-color-coral-text);
+      }
+   }
+   &--water,
+   &--ice {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-blue-base);
+      }
+
+      .hash {
+         color: var(--token-color-blue-text);
+      }
+   }
+   &--bug,
+   &--ghost {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-violet-base);
+      }
+
+      .hash {
+         color: var(--token-color-violet-text);
+      }
+   }
+   &--electric {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-yellow-base);
+      }
+
+      .hash {
+         color: var(--token-color-yellow-text);
+      }
+   }
+   &--ground {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-yellow-dark-base);
+      }
+
+      .hash {
+         color: var(--token-color-yellow-dark-text);
+      }
+   }
+   &--normal,
+   &--fairy {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-pink-base);
+      }
+
+      .hash {
+         color: var(--token-color-pink-text);
+      }
+   }
+   &--poison,
+   &--steel,
+   &--dark {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-gray-base);
+      }
+
+      .hash {
+         color: var(--token-color-gray-text);
+      }
+   }
+   &--psychic {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-rose-base);
+      }
+
+      .hash {
+         color: var(--token-color-rose-text);
+      }
+   }
+   &--fighting {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-peach-base);
+      }
+
+      .hash {
+         color: var(--token-color-peach-text);
+      }
+   }
+   &--rock {
+      &,
+      [class$="__image"] {
+         background: var(--token-color-rock-base);
+      }
+
+      .hash {
+         color: var(--token-color-rock-text);
+      }
+   }
+}

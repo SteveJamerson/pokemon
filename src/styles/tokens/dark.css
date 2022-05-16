@@ -1,0 +1,16 @@
+/**
+ * Do not edit directly
+ * Generated on Mon, 16 May 2022 02:19:07 GMT
+ */
+
+:root[data-theme='dark'] {
+  --token-background-shadow: rgba(154, 161, 171, .2);
+  --token-background-secondary: #323741;
+  --token-background-primary: #23242A;
+  --token-color-secondary-outline: #3339474d;
+  --token-color-secondary-active: #2b2f3bff;
+  --token-color-secondary-hover: #333947ff;
+  --token-color-secondary-base: #2b2f3bff;
+  --token-color-body: #f8f9faff;
+  --token-border-color-primary: #484F5C;
+}

@@ -1,0 +1,62 @@
+@import "./../../styles/mixins/breakpoints.scss";
+@import "./../../styles/utils.scss";
+
+.pokemons {
+   padding-top: 4rem;
+
+   &__title {
+      text-align: center;
+      font: {
+         size: 30px;
+         weight: 500;
+      }
+      margin-bottom: 2rem;
+
+      @include break("sm") {
+         letter-spacing: 2px;
+         font: {
+            size: 36px;
+         }
+      }
+   }
+
+   &__search input {
+      @extend .shadow;
+   }
+
+   &__cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0 0.5rem;
+
+      .pokemon-card {
+         flex: 1 1 100%;
+
+         @include break("xs") {
+            flex: 1 1 45%;
+         }
+         @include break("md") {
+            flex: 1 1 25%;
+         }
+         @include break("lg") {
+            flex: 1 1 20%;
+         }
+         @include break("xl") {
+            flex: 1 1 15%;
+         }
+      }
+   }
+
+   .not-pokemons {
+      max-height: 300px;
+   }
+
+   .sort {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 1.375rem;
+      margin: 0.25rem 0;
+   }
+}

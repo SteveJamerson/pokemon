@@ -1,0 +1,49 @@
+@import "../../../../styles/mixins/breakpoints.scss";
+
+.pokemon-card {
+   position: relative;
+   padding: 1rem;
+
+   border-radius: 1rem;
+   height: 115px;
+
+   cursor: pointer;
+
+   .title {
+      position: relative;
+      margin: 0;
+      font: {
+         weight: 600;
+      }
+      text-transform: capitalize;
+      z-index: 1;
+   }
+
+   .badge {
+      display: flex;
+      width: min-content;
+      position: relative;
+      z-index: 1;
+
+      + .badge {
+         margin-top: 0.5rem;
+      }
+   }
+
+   .hash {
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      z-index: 1;
+   }
+
+   img {
+      height: 85px;
+      width: auto;
+      max-width: 75px;
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0rem;
+      z-index: 0;
+   }
+}

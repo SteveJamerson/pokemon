@@ -1,0 +1,91 @@
+{
+   "color": {
+      "white": { "value": "#FFFFFF" },
+      "black": { "value": "#000000" },
+      "primary": {
+         "base": { "value": "{color.green.base}" },
+         "hover": { "value": "{color.green.hover}" },
+         "active": { "value": "{color.green.active}" },
+         "text": { "value": "{color.green.text}" }
+      },
+      "blue": {
+         "base": { "value": "#77BDFE" },
+         "text": { "value": "#4689C7" }
+      },
+      "coral": {
+         "base": { "value": "#FB6C6C" },
+         "text": { "value": "#DE5050" }
+      },
+      "gray": {
+         "base": { "value": "#888888" },
+         "text": { "value": "#443E3D" }
+      },
+      "green": {
+         "base": { "value": "#48D0B0" },
+         "hover": { "value": "#63D7BC" },
+         "active": { "value": "#31BF9E" },
+         "text": { "value": "#3E8570" }
+      },
+      "peach": {
+         "base": { "value": "#F2D4B4" },
+         "text": { "value": "#ab8b68" }
+      },
+      "pink": {
+         "base": { "value": "#F2CDD6" },
+         "text": { "value": "#FB6C6C" }
+      },
+      "rock": {
+         "base": { "value": "#B3B2A7" },
+         "text": { "value": "#5a5946" }
+      },
+      "rose": {
+         "base": { "value": "#CE8083" },
+         "text": { "value": "#9B4043" }
+      },
+      "violet": {
+         "base": { "value": "#A499C1" },
+         "text": { "value": "#575176" }
+      },
+      "yellow": {
+         "base": { "value": "#FFCE4B" },
+         "text": { "value": "#BF8400" }
+      },
+      "yellow-dark": {
+         "base": { "value": "#dfb034" },
+         "text": { "value": "#765a10" }
+      },
+      "yellow-green": {
+         "base": { "value": "#B6DE76" },
+         "text": { "value": "#87B347" }
+      },
+      "info": {
+         "base": { "value": "#1f5eff" },
+         "hover": { "value": "#336dff" },
+         "active": { "value": "#0a50ff" },
+         "outline": { "value": "#336dff4d" }
+      },
+      "success": {
+         "base": { "value": "#58b422" },
+         "hover": { "value": "#60c526" },
+         "active": { "value": "#4fa31f" },
+         "outline": { "value": "#60c5264d" }
+      },
+      "warning": {
+         "base": { "value": "#ffb70f" },
+         "hover": { "value": "#ffbd24" },
+         "active": { "value": "#faaf00" },
+         "outline": { "value": "#ffbd244d" }
+      },
+      "error": {
+         "base": { "value": "#fc3b3b" },
+         "hover": { "value": "#fc4f4f" },
+         "active": { "value": "#fc2727" },
+         "outline": { "value": "#fc4f4f4d" }
+      }
+   },
+   "background": {
+      "highlight": {
+         "primary": { "value": "#FFDA55" }
+      }
+   }
+}

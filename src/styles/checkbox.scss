@@ -1,0 +1,55 @@
+.checkbox {
+   position: relative;
+   display: flex;
+   align-items: center;
+   margin: 0.5rem 0;
+   cursor: pointer;
+
+   label {
+      font-weight: normal;
+      text-indent: 0.5rem;
+      cursor: pointer;
+   }
+
+   input {
+      width: 1rem;
+      height: 1rem;
+
+      appearance: none;
+
+      border: {
+         width: var(--token-border-width-default);
+         style: var(--token-border-style-solid);
+         color: var(--token-color-body);
+      }
+
+      cursor: pointer;
+
+      &::after {
+         content: "";
+         position: absolute;
+         display: block;
+         width: 0.25rem;
+         height: 0.5rem;
+      }
+
+      &:checked::after {
+         left: 0.65rem;
+         top: 0.375rem;
+         border: {
+            width: var(--token-border-width-default);
+            style: var(--token-border-style-solid);
+            color: var(--token-color-body);
+            left: 0;
+            top: 0;
+         }
+         transform: rotate(45deg);
+      }
+
+      &:disabled {
+         background-color: var(--token-border-color-primary);
+         border-color: var(--token-border-color-primary);
+         cursor: no-drop;
+      }
+   }
+}

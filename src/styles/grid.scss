@@ -1,0 +1,73 @@
+.container {
+   display: block;
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 0.875rem;
+}
+.container-fluid {
+   width: 100%;
+   display: block;
+}
+
+@each $width, $value in $container-widths {
+   @media (min-width: map-get($breakpoints, $width)) {
+      .container {
+         max-width: $value;
+      }
+   }
+}
+
+@each $col in $cols {
+   .col-#{$col} {
+      max-width: #{$col * 100/12}+ "%" !important;
+   }
+}
+
+@each $breakpoint, $value in $breakpoints {
+   @each $col in $cols {
+      @media (min-width: $value) {
+         .col-#{$breakpoint}-#{$col} {
+            max-width: #{$col * 100/12}+ "%" !important;
+         }
+      }
+   }
+}
+
+[class*="col-"] {
+   flex: 0 0 auto;
+}
+[class^="col"] {
+   padding: 0 0.875rem;
+}
+
+.row {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -0.875rem;
+
+   & > * {
+      width: 100%;
+      max-width: 100%;
+   }
+}
+
+.col {
+   flex: 1 0 0%;
+
+   &-flex {
+      display: flex;
+      flex-wrap: wrap;
+   }
+}
+
+@each $spacer, $value in $spacers {
+   .gap-#{$spacer} {
+      gap: $value;
+   }
+   .gap-x-#{$spacer} {
+      column-gap: $value;
+   }
+   .gap-y-#{$spacer} {
+      row-gap: $value;
+   }
+}

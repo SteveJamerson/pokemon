@@ -1,0 +1,27 @@
+@mixin break($breakpoint, $media: "min-width") {
+   @if $breakpoint == "xs" {
+      @media ($media: 525.98px) {
+         @content;
+      }
+   } @else if $breakpoint == "sm" {
+      @media ($media: 725.98px) {
+         @content;
+      }
+   } @else if $breakpoint == "md" {
+      @media ($media: 925.98px) {
+         @content;
+      }
+   } @else if $breakpoint == "lg" {
+      @media ($media: 1125.98px) {
+         @content;
+      }
+   } @else if $breakpoint == "xl" {
+      @media ($media: 1325.98px) {
+         @content;
+      }
+   } @else {
+      @media ($media: $breakpoint) {
+         @content;
+      }
+   }
+}
