@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Badge, Icon, Image } from "../../../atoms";
 import { PokemonsProps } from "../Pokemons.interfaces";
 import "../pokemons.scss";
@@ -36,7 +36,14 @@ export const PokemonDetails: React.FC<PokemonsProps> = ({
 
    const triggerOutClick = (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-   ) => outClick(event);
+   ) => {
+      document.querySelector("body")?.removeAttribute("style");
+      return outClick(event);
+   };
+
+   useLayoutEffect(() => {
+      document.querySelector("body")?.setAttribute("style", "overflow: hidden");
+   });
 
    return (
       <div className={classes} {...props}>

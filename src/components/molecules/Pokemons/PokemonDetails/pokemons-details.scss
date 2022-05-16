@@ -71,9 +71,9 @@
 
       img {
          position: relative;
-         max-height: 250px;
+         max-height: 200px;
          margin: auto;
-         top: 15%;
+         top: 10%;
 
          @include break("sm") {
             top: 0;
