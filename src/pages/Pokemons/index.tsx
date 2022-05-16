@@ -1,9 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {
+   useCallback,
+   useEffect,
+   useLayoutEffect,
+   useState,
+} from "react";
 import { Checkbox, Drop, TextField } from "../../components/atoms";
 import {
    Navbar,
    PokemonCard,
    PokemonDetails,
+   Slider,
 } from "../../components/molecules";
 import { PokemonsProps } from "../../components/molecules/Pokemons/Pokemons.interfaces";
 import {
@@ -17,6 +23,8 @@ import {
    FILTER__ATK,
    FILTER__DEF,
    FILTER__TYPE,
+   maxPerSlide,
+   separar,
 } from "./pokemons.constants";
 import "./styles.scss";
 
@@ -32,14 +40,19 @@ const Pokemons: React.FC = () => {
    const [formFilter, setFormFilter] = useState<any>({});
    const [formSort, setFormSort] = useState<any>({});
 
-   const handlePokemonShow = useCallback((index: number) => {
-      setPokemonsDetails(index);
-      setPokemonShow((s) => !s);
-   }, []);
+   const [itemPerSlide, setItemPerSlide] = useState(18);
+   const [indexPerSlide, setIndexPerSlide] = useState(0);
+
+   const handlePokemonShow = useDebounce(
+      useCallback((index: number) => {
+         setPokemonsDetails(index);
+         setPokemonShow((s) => !s);
+      }, [])
+   );
 
    const request = useDebounce(
       useCallback(async () => {
-         await getAllPokemons()
+         await getAllPokemons({ limit: "100" })
             .then((data) => data.results)
             .then((result) => {
                result.forEach((p: PokemonsResults) =>
@@ -78,6 +91,7 @@ const Pokemons: React.FC = () => {
 
    const handleSearch = (e: string) => {
       setPokemonsPagination(1);
+      setIndexPerSlide(0);
       let value = e.toLowerCase();
 
       const arr = new Array(...pokemons).filter((p) => {
@@ -95,13 +109,14 @@ const Pokemons: React.FC = () => {
          }
       });
 
-      setPokemonsView(value === "" ? pokemons.slice(0, 18) : arr.slice(0, 18));
+      setPokemonsView(value === "" ? pokemons : arr);
    };
 
    const handleFilter = (event: any) => {
       const id = event.target.id;
       const value = event.target.checked;
       setPokemonsPagination(1);
+      setIndexPerSlide(0);
       setFormFilter((values: any) => {
          const r = { ...values, [id]: value };
 
@@ -110,11 +125,7 @@ const Pokemons: React.FC = () => {
             return badge?.map((b) => r[b]).find((ft) => ft) && f;
          });
 
-         setPokemonsView(
-            arr.length
-               ? arr.slice(0 + (pokemonsPagination ?? 0), 18)
-               : pokemons.slice(0 + (pokemonsPagination ?? 0), 18)
-         );
+         setPokemonsView(arr.length ? arr : pokemons);
 
          return r;
       });
@@ -124,10 +135,24 @@ const Pokemons: React.FC = () => {
       const id: "attack" | "special_attack" | "defense" | "special_defense" =
          event.target.id.replace(" ", "_");
       setFormSort(id);
+      setIndexPerSlide(0);
    };
+
+   useLayoutEffect(() => {
+      function updateSize() {
+         setItemPerSlide(maxPerSlide(window.innerWidth));
+      }
+      window.addEventListener("resize", updateSize);
+      updateSize();
+      return () => window.removeEventListener("resize", updateSize);
+   }, []);
 
    useEffect(() => {
       request();
+
+      window.onload = (e: any) => {
+         setItemPerSlide(maxPerSlide(window.innerWidth));
+      };
    }, []);
 
    return (
@@ -155,7 +180,6 @@ const Pokemons: React.FC = () => {
                               id={f}
                               label={f}
                               onChange={handleFilter}
-                              checked={formFilter[f]}
                            />
                         ))}
                      </Drop>
@@ -187,30 +211,38 @@ const Pokemons: React.FC = () => {
                      </Drop>
                   </div>
                   <div className="col-12">
-                     <div className="pokemons__cards">
-                        {pokemonsView
-                           .sort((a, b) => (a.hash > b.hash ? 1 : -1))
-                           .sort((a: any, b: any) => {
-                              if (a.stats[formSort] < b.stats[formSort]) {
-                                 return -1;
-                              } else if (
-                                 a.stats[formSort] > b.stats[formSort]
-                              ) {
-                                 return 1;
-                              } else {
-                                 return 0;
-                              }
-                           })
-                           .map((pokemon, k) => (
-                              <PokemonCard
-                                 key={k}
-                                 {...pokemon}
-                                 onClick={() => handlePokemonShow(pokemon.hash)}
-                                 loading={loading}
-                              />
-                           ))}
-                     </div>
-
+                     <Slider index={indexPerSlide}>
+                        {separar(
+                           pokemonsView
+                              .sort((a, b) => (a.hash > b.hash ? 1 : -1))
+                              .sort((a: any, b: any) => {
+                                 if (a.stats[formSort] < b.stats[formSort]) {
+                                    return -1;
+                                 } else if (
+                                    a.stats[formSort] > b.stats[formSort]
+                                 ) {
+                                    return 1;
+                                 } else {
+                                    return 0;
+                                 }
+                              }),
+                           itemPerSlide
+                        ).map((view: PokemonsProps[], k: any) => {
+                           return (
+                              <div className="pokemons__cards" key={k}>
+                                 {view.map((pokemon, key) => (
+                                    <PokemonCard
+                                       key={key}
+                                       {...pokemon}
+                                       onClick={() =>
+                                          handlePokemonShow(pokemon.hash)
+                                       }
+                                    />
+                                 ))}
+                              </div>
+                           );
+                        })}
+                     </Slider>
                      {pokemonShow && (
                         <PokemonDetails
                            key={pokemonsDetails}
@@ -218,7 +250,6 @@ const Pokemons: React.FC = () => {
                               (i) => i.hash === pokemonsDetails
                            ) as PokemonsProps)}
                            outClick={handlePokemonShow}
-                           loading={loading}
                         />
                      )}
                   </div>
