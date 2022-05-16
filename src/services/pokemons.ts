@@ -1,35 +1,27 @@
-import { AxiosResponse } from 'axios';
 import { environment } from '../environment';
-import api from './api';
 
 const { ENDPOINT_POKEMONS } = environment;
-
-interface PokemonsResult {
+export interface PokemonsResults {
+   name: string;
+   url: string;
+}
+export interface PokemonsResponse {
    count: number;
    next: string;
    previous: boolean;
-   results: { name: string; url: string }[];
+   results: PokemonsResults[];
 }
 
-export const getAllPokemons = async (): Promise<
-   AxiosResponse<PokemonsResult, any>
-> => {
-   return api.get(ENDPOINT_POKEMONS, {
-      headers: {
-         'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-         limit: '18',
-      },
-   });
+export const getAllPokemons = async (
+   params?: object
+): Promise<PokemonsResponse> => {
+   return fetch(
+      ENDPOINT_POKEMONS +
+         '?' +
+         new URLSearchParams(Object.assign({ limit: '18' }, params))
+   ).then((response) => response.json());
 };
 
-export const getPokemon = async (
-   url: string
-): Promise<AxiosResponse<any, any>> => {
-   return api.get(url, {
-      headers: {
-         'Content-Type': 'application/x-www-form-urlencoded',
-      },
-   });
+export const getPokemon = async (url: string): Promise<any> => {
+   return fetch(url).then((response) => response.json());
 };

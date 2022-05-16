@@ -8,7 +8,7 @@ import "./pokemons-details.scss";
 export const PokemonDetails: React.FC<PokemonsProps> = ({
    className,
    variant = "primary",
-   title,
+   name,
    description,
    info,
    stats,
@@ -64,7 +64,7 @@ export const PokemonDetails: React.FC<PokemonsProps> = ({
             </div>
             <div className="pokemon-details__body">
                <div className="pokemon-details__body-header">
-                  <p className="title"> {title} </p>
+                  <p className="title"> {name} </p>
                   <p className="hash"> #{hash} </p>
                </div>
                {description}
@@ -72,7 +72,7 @@ export const PokemonDetails: React.FC<PokemonsProps> = ({
                   {info?.weight && (
                      <li key={0} className="item">
                         <span>
-                           <Icon name="loader-line" />
+                           <Icon name="balance-line" />
                            <p>{info.weight}</p>
                         </span>
                         <p>
@@ -83,7 +83,7 @@ export const PokemonDetails: React.FC<PokemonsProps> = ({
                   {info?.hight && (
                      <li key={1} className="item">
                         <span>
-                           <Icon name="loader-line" />
+                           <Icon name="scale-line" />
                            <p>{info.hight}</p>
                         </span>
                         <p>

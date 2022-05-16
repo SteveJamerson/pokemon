@@ -30,6 +30,7 @@
       "build": "react-scripts build",
       "build:style": "style-dictionary build --config ./src/styles/build.js",
       "test": "react-scripts test",
+      "test:cov": "react-scripts test --coverage --watchAll=false",
       "eject": "react-scripts eject"
    },
    "eslintConfig": {
