@@ -45,7 +45,11 @@ const Pokemons: React.FC = () => {
    const handleSearch = useDebounce(
       useCallback(async (params?: any) => {
          await getAllPokemons()
-            .then(({ data }) => data.results)
+            .then(({ data }) => {
+               console.log(data);
+
+               return data.results;
+            })
             .then((result) => {
                result.forEach((p) =>
                   getPokemon(p.url)
