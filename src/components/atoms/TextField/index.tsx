@@ -31,8 +31,9 @@ export const TextField: React.FC<TextFieldProps> = ({
       className,
    ]);
 
-   const triggerIcon = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) =>
-      iconClick(event);
+   const triggerIcon = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+      return iconClick && iconClick(event, inputRef.current?.value);
+   };
 
    return (
       <>

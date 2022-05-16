@@ -8,7 +8,7 @@ import "./pokemons-card.scss";
 export const PokemonCard: React.FC<PokemonsProps> = ({
    className,
    variant = "primary",
-   title,
+   name,
    description,
    info,
    image,
@@ -38,7 +38,7 @@ export const PokemonCard: React.FC<PokemonsProps> = ({
    return (
       <div className={classes} {...props}>
          <span className="hash">#{hash}</span>
-         <p className="title">{title}</p>
+         <p className="title">{name}</p>
          {badge?.map((b, k) => (
             <Badge text={b} key={k} />
          ))}

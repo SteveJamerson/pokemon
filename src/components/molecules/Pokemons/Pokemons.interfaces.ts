@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { PokemonType } from './Pokemons.type';
 
 export interface PokemonsProps extends HTMLAttributes<HTMLDivElement> {
-   title?: string;
+   name?: string;
    description?: string;
    stats?: PokemonsStats;
    info?: PokemonsInfo;
