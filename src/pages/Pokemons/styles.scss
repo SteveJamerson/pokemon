@@ -32,7 +32,7 @@
       .pokemon-card {
          flex: 1 1 100%;
 
-         @include break("sm") {
+         @include break("xs") {
             flex: 1 1 45%;
          }
          @include break("md") {
