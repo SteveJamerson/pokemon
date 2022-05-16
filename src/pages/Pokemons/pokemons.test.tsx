@@ -1,7 +1,6 @@
 import { cleanup, render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Pokemons from ".";
-import { POKEMON, POKEMONS__ALL } from "../../services/mock/Pokemons.mock";
 import * as service from "../../services/pokemons";
 
 // jest.mock("../../services/pokemons", () => ({
@@ -45,9 +44,9 @@ describe("Pokemons", () => {
       );
       jest.advanceTimersByTime(2000);
       const mockAll = jest.spyOn(service, "getAllPokemons");
-      mockAll.mockResolvedValue(
-         new Promise((resolve) => resolve(POKEMONS__ALL))
-      );
+      // mockAll.mockResolvedValue(
+      //    new Promise((resolve) => resolve(POKEMONS__ALL))
+      // );
       jest.advanceTimersByTime(2000);
       jest.useRealTimers();
    });
@@ -61,7 +60,7 @@ describe("Pokemons", () => {
       );
       jest.advanceTimersByTime(2000);
       const mockAll = jest.spyOn(service, "getPokemon");
-      mockAll.mockResolvedValue(new Promise((resolve) => resolve(POKEMON)));
+      // mockAll.mockResolvedValue(new Promise((resolve) => resolve(POKEMON)));
       jest.advanceTimersByTime(2000);
       jest.useRealTimers();
    });
